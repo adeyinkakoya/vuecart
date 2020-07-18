@@ -31,6 +31,7 @@
 
 
 <script>
+import { mapGetters } from 'vuex'
 import MiniCart from "./MiniCart";
 export default {
   name: 'NavBar',
@@ -38,9 +39,10 @@ export default {
     MiniCart
     },
     computed: {
-      getCartSumQuantity(){
-        return this.$store.getters.getCartSumQuantity
-      }
+      ...mapGetters("cart",["getCartSumQuantity"])
+      // getCartSumQuantity(){
+      //   return this.$store.getters.getCartSumQuantity
+      // }
     },
  
 }

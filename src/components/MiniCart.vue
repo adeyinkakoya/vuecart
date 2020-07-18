@@ -16,7 +16,7 @@
           <a
             href="#"
             class="badge badge-secondary"
-            @click="removeCartItem(index)"
+            @click.prevent="removeProductFromCart(item.product)"
           >remove</a>
         </div>
       </div>
@@ -25,31 +25,38 @@
 
     <div class="d-flex justify-content-between">
       <span>Total: ${{getCartTotal}}</span>
-      <a href="#" >Clear Cart</a>
+      <a href="" @click.prevent="clearEntireCart()">Clear Cart</a>
     </div>
   </div>
  
 </template>
 
 <script>
+import { mapGetters,mapActions } from "vuex";
 export default {
   name: 'MiniCart',
   computed: {
-    getCart(){
-      return this.$store.getters.getCart
-    },
-     getCartTotal(){
-      return this.$store.getters.getCartTotal
-    }
+    ...mapGetters("cart",["getCart","getCartTotal"])
+    // getCart(){
+    //   return this.$store.getters.getCart
+    // },
+    //  getCartTotal(){
+    //   return this.$store.getters.getCartTotal
+    // }
   },
   mounted() {
-    this.$store.dispatch('getCartFromDB')
+    this.getCartFromDB()
+    // this.$store.dispatch('getCartFromDB')
   },
   methods: {
-    removeCartItem(index){
-      this.$store.commit('REMOVE_CART_ITEM',index)
-    }
-  },
+    ...mapActions("cart",["removeProductFromCart","clearEntireCart","getCartFromDB"])
+    // removeCartItem(producttoremove){
+    //   this.$store.dispatch('removeProductFromCart',producttoremove)
+    // },
+    // clearEntireCart(){
+    //   this.$store.dispatch('clearEntireCart')
+    // }
+  }
 
  
 }

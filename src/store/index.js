@@ -5,10 +5,16 @@ import state from './state.js'
 import getters from './getters.js'
 import actions from './actions.js'
 import mutations from './mutations.js'
+import product from './modules/product'
+import cart from './modules/cart'
 
 export default new Vuex.Store({
     state,
     getters,
     mutations,
-    actions
+    actions,
+    modules: {
+        product,
+        cart
+    }
 })

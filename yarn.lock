@@ -6373,6 +6373,11 @@ public-encrypt@^4.0.0:
     randombytes "^2.0.1"
     safe-buffer "^5.1.2"
 
+pulltorefreshjs@^0.1.20:
+  version "0.1.20"
+  resolved "https://registry.yarnpkg.com/pulltorefreshjs/-/pulltorefreshjs-0.1.20.tgz#b416a7e6c158ae448f88a4b9738cbaff831eedb4"
+  integrity sha512-ezJLhM1dXoNJ2Sx5tRAp4QPqI7jfQfHAHdVd6gQgNPfpIC5v6v/TTesgPQT2aFxEmqiTemWCQrmliaCxqRAYiA==
+
 pump@^2.0.0:
   version "2.0.1"
   resolved "https://registry.npm.taobao.org/pump/download/pump-2.0.1.tgz#12399add6e4cf7526d973cbc8b5ce2e2908b3909"

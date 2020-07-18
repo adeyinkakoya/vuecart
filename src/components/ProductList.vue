@@ -10,11 +10,11 @@
              <h4 class="card-title">
                 <router-link :to="{name:'Product', params:{id:product.id}}" class="">{{product.title}}</router-link>
              </h4>
-             <h6>${{product.price}}</h6>
+             <h6>N{{product.price}}</h6>
              <p class="card-text">{{product.description}} </p>
          </div>
          <div class="px-4 pb-3">
-             <button class="btn btn-secondary" @click="addProductToCart(product)">Add to cart</button>
+             <button class="btn btn-secondary" @click="addToCart(product)">Add to cart</button>
          </div>
      </div>
   </div>
@@ -23,6 +23,7 @@
 </template>
 
 <script>
+import { mapGetters,mapActions } from "vuex";
 export default {
     name:"Productlist",
     components:{},
@@ -33,24 +34,32 @@ export default {
         }
     },
     computed: {
-        allProducts(){
-            return this.$store.getters.allProducts
-        }
+        ...mapGetters("product",["allProducts"])
     },
     mounted() {
-        this.$store.dispatch('getProducts')
-        .then(()=>{
-            let m = this
-            m.loading = false
-        })
+        
+        //window.loading()
+        this.getProducts()// Call the action , you can still add your .then.
+        .then(()=>{ 
+            return new Promise((resolve,reject)=>{
+                this.loading=false  
+            })
+        }
+        )
     },
     methods: {
-        addProductToCart(product){
-            // We are passing an object as the payload.This goes into the cart array and forms an associative array of produt and quantity
-            this.$store.dispatch('addProductToCart',{
+        ...mapActions("product",["getProducts"]),
+        ...mapActions("cart",["addProductToCart"]),
+        addToCart(product){
+            this.addProductToCart({
                 product:product,
                 quantity:1
             })
+            // We are passing an object as the payload.This goes into the cart array and forms an associative array of produt and quantity
+            // this.$store.dispatch('addProductToCart',{
+            //     product:product,
+            //     quantity:1
+            // })
         }
     },
 

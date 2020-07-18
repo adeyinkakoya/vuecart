@@ -7,8 +7,6 @@ import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import PulseLoader from 'vue-spinner/src/PulseLoader.vue'
 
-
-
 Vue.component('pulse-loader', PulseLoader)
 Vue.config.productionTip = false
 
