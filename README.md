@@ -1,4 +1,4 @@
-# vue-training
+# vue-training 2020. Basic Shopping Cart with Vue
 
 ## Project setup
 ```
