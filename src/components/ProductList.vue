@@ -1,6 +1,7 @@
 <template>
 <div>
-  <pulse-loader :loading="loading" :color="color" />
+    <!-- <div v-if="loading">Loading</div>
+  <pulse-loader :loading="loading" :color="color" /> -->
 <div class="d-flex align-items-stretch flex-wrap">
     
   <div class="col-3 mt-3" v-for="(product,index) in allProducts" :key="index">
@@ -29,8 +30,8 @@ export default {
     components:{},
     data() {
         return {
-            loading:true,
-            color:"blue",
+            // loading:this.$store.state.product.loading,
+            // color:"blue",
         }
     },
     computed: {
@@ -40,12 +41,7 @@ export default {
         
         //window.loading()
         this.getProducts()// Call the action , you can still add your .then.
-        .then(()=>{ 
-            return new Promise((resolve,reject)=>{
-                this.loading=false  
-            })
-        }
-        )
+      
     },
     methods: {
         ...mapActions("product",["getProducts"]),
