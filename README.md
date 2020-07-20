@@ -1,4 +1,4 @@
-# vue-training 2020. Basic Shopping Cart with Vue
+# vue-training 2020. Basic Shopping Cart with Vue and Laravel API
 
 ## Project setup
 ```
